@@ -2,6 +2,7 @@ package com.example.praktikum8.ui.view.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.praktikum8.R
 import com.example.praktikum8.data.MataKuliah
+import com.example.praktikum8.data.RuangKelas
 import com.example.praktikum8.model.Mahasiswa
 
 @Composable
@@ -131,6 +134,21 @@ fun RencanaStudyView(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Light
                 )
+                Spacer(modifier = Modifier.padding(8.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    RuangKelas.Kelas.forEach{ data ->
+                        Row(verticalAlignment = Alignment.CenterVertically){
+                            RadioButton(
+                                selected = pilihanKelas == data,
+                                onClick = {pilihanKelas = data}
+                            )
+                            Text(data)
+                        }
+                    }
+                }
             }
         }
     }
