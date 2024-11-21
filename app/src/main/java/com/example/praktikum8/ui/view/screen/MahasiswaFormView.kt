@@ -41,7 +41,7 @@ fun MahasiswaFormView(
     modifier: Modifier,
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
-){
+) {
     var nama by remember {
         mutableStateOf("")
     }
@@ -87,6 +87,35 @@ fun MahasiswaFormView(
                     color = Color.Red,
                     fontWeight = FontWeight.Light
                 )
+            }
+            Spacer(modifier = Modifier.padding(top = 16.dp))
+            Box(
+                modifier = Modifier
+                    .background(
+                        color = Color.White,
+                        shape = RoundedCornerShape(
+                            topEnd = 15.dp,
+                            topStart = 15.dp
+                        )
+                    )
+                    .fillMaxSize(),
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Masukan Data Kamu",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 19.sp
+                    )
+                    Text(
+                        text = "Isi sesuai data yang kamu daftarkan",
+                        fontWeight = FontWeight.Light
+                    )
+                }
             }
         }
     }
