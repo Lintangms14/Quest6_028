@@ -33,7 +33,7 @@ fun RencanaStudyView(
     mahasiswa: Mahasiswa,
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
-){
+) {
     var chosenDropdown by remember {
         mutableStateOf(
             ""
@@ -44,7 +44,7 @@ fun RencanaStudyView(
         mutableStateOf("")
     }
     var listData: MutableList<String> = mutableListOf(chosenDropdown, pilihanKelas)
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(id = R.color.primary))
@@ -61,6 +61,21 @@ fun RencanaStudyView(
                     .clip(shape = CircleShape)
                     .size(50.dp)
             )
+            Spacer(modifier = Modifier.padding(start = 16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = mahasiswa.nama,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 15.sp,
+                    color = Color.White
+                )
+                Text(
+                    text = mahasiswa.nim,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 12.sp,
+                    color = Color.White
+                )
+            }
         }
     }
 }
