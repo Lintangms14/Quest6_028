@@ -44,4 +44,23 @@ fun RencanaStudyView(
         mutableStateOf("")
     }
     var listData: MutableList<String> = mutableListOf(chosenDropdown, pilihanKelas)
+    Column (
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = colorResource(id = R.color.primary))
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp), verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(R.drawable.umy),
+                contentDescription = "",
+                modifier = Modifier
+                    .clip(shape = CircleShape)
+                    .size(50.dp)
+            )
+        }
+    }
 }
