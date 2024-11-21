@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.praktikum8.R
+import com.example.praktikum8.data.MataKuliah
 import com.example.praktikum8.model.Mahasiswa
 
 @Composable
@@ -111,7 +112,25 @@ fun RencanaStudyView(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Light
                 )
+                Spacer(modifier = Modifier.padding(8.dp))
+                DynamicSelectTextField(
+                    selectedValue = chosenDropdown,
+                    options = MataKuliah.Options,
+                    label = "Mata Kuliah",
+                    onValueChangeEvent = {
+                        chosenDropdown = it
+                    }
+                )
             }
         }
     }
 }
+
+@Composable
+fun DynamicSelectTextField(
+    selectedValue: String,
+    options: List<String>,
+    label: String,
+    onValueChangeEvent: (String) -> Unit,
+    modifier: Modifier = Modifier
+){}
