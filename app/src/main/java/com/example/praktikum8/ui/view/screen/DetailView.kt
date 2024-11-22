@@ -1,5 +1,6 @@
 package com.example.praktikum8.ui.view.screen
 
+import android.widget.Button
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -15,6 +17,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,7 +42,7 @@ fun DetailView(
     mahasiswa: Mahasiswa,
     modifier: Modifier = Modifier,
     onBackButton: () -> Unit
-){
+) {
     val ListDataMhs = listOf(
         Pair("NIM", dataMhs.nim),
         Pair("Nama", dataMhs.nama),
@@ -106,7 +110,57 @@ fun DetailView(
                     fontSize = 18.sp,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
+                ListDataMhs.forEach { data ->
+                    DetailRow(judul = data.first, isinya = data.second)
+                }
+                HorizontalDivider()
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Detail Rencana Studi",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                ListDataKRS.forEach { data ->
+                    DetailRow(judul = data.first, isinya = data.second)
+                }
+                HorizontalDivider()
+                Spacer(modifier = Modifier.height(22.dp))
+                Button(onClick = {onBackButton()},
+                    modifier = Modifier.fillMaxWidth().padding(top = 16.dp), shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(text = "Kembali")
+                }
             }
         }
+    }
+}
+
+@Composable
+fun DetailRow(judul: String, isinya: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = judul,
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 14.sp,
+            modifier = Modifier.weight(1f)
+        )
+        Text(
+            text = ":",
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        )
+        Text(
+            text = isinya,
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            modifier = Modifier.weight(2f)
+        )
     }
 }
