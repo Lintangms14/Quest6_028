@@ -94,6 +94,19 @@ fun DetailView(
                     shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp)
                 )
                 .fillMaxSize()
-        ) {}
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = "Detail Data Mahasiswa",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
+        }
     }
 }
