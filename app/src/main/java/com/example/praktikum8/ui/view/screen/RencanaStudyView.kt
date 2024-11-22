@@ -45,6 +45,7 @@ import com.example.praktikum8.R
 import com.example.praktikum8.data.MataKuliah
 import com.example.praktikum8.data.RuangKelas
 import com.example.praktikum8.model.Mahasiswa
+import com.example.praktikum8.ui.widget.DynamicSelectField
 
 
 @Composable
@@ -126,11 +127,11 @@ fun RencanaStudyView(
                     fontWeight = FontWeight.Light
                 )
                 Spacer(modifier = Modifier.padding(8.dp))
-                DynamicSelectTextField(
-                    selectedValue = chosenDropdown,
+                DynamicSelectField(
+                    selectedvalue = chosenDropdown,
                     options = MataKuliah.Options,
                     label = "Mata Kuliah",
-                    onValueChangeEvent = {
+                    onValueChangedEvent = {
                         chosenDropdown = it
                     }
                 )
@@ -185,49 +186,6 @@ fun RencanaStudyView(
                         Text(text = "Lanjut")
                     }
                 }
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DynamicSelectTextField(
-    selectedValue: String,
-    options: List<String>,
-    label: String,
-    onValueChangeEvent: (String) -> Unit,
-    modifier: Modifier = Modifier
-){
-    var expanded by remember { mutableStateOf(false) }
-
-    ExposedDropdownMenuBox(
-        expanded = expanded,
-        onExpandedChange = {expanded = !expanded},
-        modifier = Modifier
-    ){
-        OutlinedTextField(
-            readOnly = true,
-            value = selectedValue,
-            onValueChange = {},
-            label = { Text(text = label) },
-            trailingIcon = {
-                ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-            },
-            colors = OutlinedTextFieldDefaults.colors(),
-            modifier = Modifier
-                .menuAnchor()
-                .fillMaxWidth()
-        )
-        ExposedDropdownMenu(expanded = expanded, onDismissRequest = {expanded = false}) {
-            options.forEach{option: String ->
-                DropdownMenuItem(
-                    text = { Text(text = option) },
-                    onClick = {
-                        expanded = false
-                        onValueChangeEvent(option)
-                    }
-                )
             }
         }
     }
