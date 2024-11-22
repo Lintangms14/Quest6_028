@@ -18,4 +18,8 @@ fun DetailView(
         Pair("Nama", dataMhs.nama),
         Pair("Email", dataMhs.email)
     )
+    val ListDataKRS = listOf(
+        Pair("Mata Kuliah", dataKRS.Matkul),
+        Pair("Kelas", dataKRS.Kelas)
+    )
 }
