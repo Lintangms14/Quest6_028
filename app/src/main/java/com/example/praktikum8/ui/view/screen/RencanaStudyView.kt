@@ -69,7 +69,7 @@ fun RencanaStudyView(
                 .padding(16.dp), verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(R.drawable.profil),
+                painter = painterResource(R.drawable.umy),
                 contentDescription = "",
                 modifier = Modifier
                     .clip(shape = CircleShape)
