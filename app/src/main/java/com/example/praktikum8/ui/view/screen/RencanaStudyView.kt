@@ -46,6 +46,7 @@ import com.example.praktikum8.data.MataKuliah
 import com.example.praktikum8.data.RuangKelas
 import com.example.praktikum8.model.Mahasiswa
 
+
 @Composable
 fun RencanaStudyView(
     mahasiswa: Mahasiswa,
