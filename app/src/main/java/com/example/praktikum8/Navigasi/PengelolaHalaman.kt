@@ -4,15 +4,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.praktikum8.model.Mahasiswa
-import com.example.praktikum8.model.RencanaStudi
-import com.example.praktikum8.ui.view.screen.DetailRow
 import com.example.praktikum8.ui.view.screen.DetailView
 import com.example.praktikum8.ui.view.screen.MahasiswaFormView
 import com.example.praktikum8.ui.view.screen.RencanaStudyView
@@ -46,8 +42,18 @@ fun MahasiswaApp(
                navController.navigate(
                    Halaman.Mahasiswa.name
                )
+            })
+            composable(route = Halaman.Mahasiswa.name){
+                MahasiswaFormView(
+                    onSubmitButtonClicked = {
+                        mahasiswaViewModel.saveDataMahasiswa(it)
+                        navController.navigate(Halaman.MataKuliah.name)
+                    },
+                    onBackButtonClicked = {
+                        navController.popBackStack()
+                    }
+                )
             }
-            )
             composable(route = Halaman.MataKuliah.name) {
                 RencanaStudyView(
                     mahasiswa = mahasiswaUiState,
