@@ -39,10 +39,12 @@ fun MahasiswaApp(
     ){
         composable(route = Halaman.Splash.name) {
             SplashView(onMulaiButton = {
-               navController.navigate(
-                   Halaman.Mahasiswa.name
-               )
-            })
+                navController.navigate(
+                    Halaman.Mahasiswa.name
+                )
+            }
+            )
+        }
             composable(route = Halaman.Mahasiswa.name){
                 MahasiswaFormView(
                     onSubmitButtonClicked = {
@@ -75,6 +77,6 @@ fun MahasiswaApp(
                     onBackButton = {navController.popBackStack()}
                 )
             }
-        }
+
     }
 }
